@@ -1,11 +1,13 @@
+// Select HTML Element
 const board = document.querySelector("#board")
 const winner = document.querySelector("#winner")
 const resetBtn = document.querySelector("#resetBtn")
+
+// Create Array with null
 let cells = Array(25).fill(null)
 let currentPlayer = "X";
-let gameActive = true;
 
-
+// Declare Start Game Function 
 function startGame(){
     for( let i=0; i < 25; i++){
         const cell=  document.createElement("div")
@@ -17,8 +19,10 @@ function startGame(){
     }
 }
 
+// Call startGame Function
 startGame()
 
+// Handel Click Function Declare
 function handleClick(e) {
     let indexNumber = e.target.dataset.indexnumber
     // console.log(cells[indexnumber]);
@@ -36,6 +40,7 @@ function handleClick(e) {
     }
 }
 
+// Check Winner Function Declare
 function checkWinner() {
     const combination = [
         [0,1,2],
@@ -95,6 +100,8 @@ function checkWinner() {
         }
         return cells.includes(null) ? null : "Draw";
 }
+
+// Add Click Event to Reset button
 resetBtn.addEventListener("click",()=>{
     window.location.reload();
 })
